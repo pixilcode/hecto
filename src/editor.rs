@@ -1,4 +1,5 @@
 use std::io::{self, stdout};
+use std::default::Default;
 use termion::event::Key;
 use termion::input::TermRead;
 use termion::raw::IntoRawMode;
@@ -6,10 +7,6 @@ use termion::raw::IntoRawMode;
 pub struct Editor {}
 
 impl Editor {
-	pub fn new() -> Self {
-		Editor {}
-	}
-
 	pub fn run(&self) {
 		let _stdout = stdout().into_raw_mode().unwrap();
 
@@ -28,6 +25,12 @@ impl Editor {
 				Err(err) => die(err)
 			}
 		}
+	}
+}
+
+impl Default for Editor {
+	fn default() -> Self {
+		Self {}
 	}
 }
 
